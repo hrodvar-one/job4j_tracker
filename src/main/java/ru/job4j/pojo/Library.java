@@ -26,7 +26,7 @@ public class Library {
         System.out.println("Indexes of books with name Clean Code :");
         for (int index = 0; index < books.length; index++) {
             Book book = books[index];
-            if (book.getName().equals("Clean code")) {
+            if ("Clean code".equals(book.getName())) {
                 System.out.println(index);
             }
         }

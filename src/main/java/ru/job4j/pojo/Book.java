@@ -4,6 +4,11 @@ public class Book {
     private String name;
     private int numberOfPage;
 
+    public Book(String name, int numberOfPage) {
+        this.name = name;
+        this.numberOfPage = numberOfPage;
+    }
+
     public String getName() {
         return name;
     }
@@ -17,11 +22,6 @@ public class Book {
     }
 
     public void setNumberOfPage(int numberOfPage) {
-        this.numberOfPage = numberOfPage;
-    }
-
-    public Book(String name, int numberOfPage) {
-        this.name = name;
         this.numberOfPage = numberOfPage;
     }
 }
