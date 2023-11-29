@@ -10,11 +10,9 @@ public class FileStore implements Store {
     }
 
     public void save(String data) {
-        //Тут реализация хранения данных в файле
     }
 
     public String read() {
-        // Тут чтение файла
         return null;
     }
 }
