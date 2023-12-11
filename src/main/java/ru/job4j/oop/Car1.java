@@ -1,10 +1,10 @@
 package ru.job4j.oop;
 
-public class Car {
+public class Car1 {
     private String brand;
     private String model;
 
-    public Car(String brand, String model) {
+    public Car1(String brand, String model) {
         this.brand = brand;
         this.model = model;
     }
@@ -39,14 +39,14 @@ public class Car {
             System.out.println("Марка: " + brand);
             System.out.println("Модель: " + model);
             System.out.println("Модель TripComputer: " + this.model);
-            System.out.println("Модель Car: " + Car.this.model);
+            System.out.println("Модель Car: " + Car1.this.model);
         }
 
     }
 
     public static TripComputer getTripComputer() {
-        Car car = new Car("Марка", "Модель");
-        Car.TripComputer tripComputer = car.new TripComputer();
+        Car1 car1 = new Car1("Марка", "Модель");
+        Car1.TripComputer tripComputer = car1.new TripComputer();
         return tripComputer;
     }
 }
