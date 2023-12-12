@@ -19,8 +19,8 @@ public class PolyVehicle {
                 shuttleBus,
                 intercityBus,
                 doubleDecker};
-        for (Vehicle v : vehicles) {
-            v.move();
+        for (Vehicle vehicle : vehicles) {
+            vehicle.move();
         }
     }
 }
