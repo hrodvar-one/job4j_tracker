@@ -27,10 +27,10 @@ public class ReconstructPhrase {
 
     private String getDescendingElements() {
         StringBuilder builder = new StringBuilder();
-        for (Character deque: descendingElements) {
-            builder.append(deque);
+        while (!descendingElements.isEmpty()) {
+            builder.append(descendingElements.pollLast());
         }
-        return builder.reverse().toString();
+        return builder.toString();
     }
 
     public String getReconstructPhrase() {
