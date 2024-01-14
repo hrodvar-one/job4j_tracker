@@ -37,11 +37,7 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 totalPoints = subject.score();
-                if (map.containsKey(subject.name())) {
-                    map.put(subject.name(), map.get(subject.name()) + totalPoints);
-                } else {
-                    map.put(subject.name(), subject.score());
-                }
+                map.put(subject.name(), map.getOrDefault(subject.name(), 0) + totalPoints);
             }
         }
         for (Map.Entry<String, Integer> s : map.entrySet()) {
@@ -70,17 +66,22 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 totalPoints = subject.score();
-                if (map.containsKey(subject.name())) {
-                    map.put(subject.name(), map.get(subject.name()) + totalPoints);
-                } else {
-                    map.put(subject.name(), subject.score());
-                }
+                map.put(subject.name(), map.getOrDefault(subject.name(), 0) + totalPoints);
+
             }
         }
         for (Map.Entry<String, Integer> s : map.entrySet()) {
             result.add(new Label(s.getKey(), (double) s.getValue()));
         }
-        result.sort(Comparator.naturalOrder());
-        return result.get(result.size() - 1);
+        for (int i = 0; i < result.size() - 1; i++) {
+            for (int j = 0; j < result.size() - i - 1; j++) {
+                if (result.get(j).getName().compareTo(result.get(j + 1).getName()) > 0) {
+                    Label temp = result.get(j);
+                    result.set(j, result.get(j + 1));
+                    result.set(j + 1, temp);
+                }
+            }
+        }
+        return result.get(1);
     }
 }
