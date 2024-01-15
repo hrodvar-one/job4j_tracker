@@ -67,19 +67,16 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 totalPoints = subject.score();
                 map.put(subject.name(), map.getOrDefault(subject.name(), 0) + totalPoints);
-
             }
         }
         for (Map.Entry<String, Integer> s : map.entrySet()) {
             result.add(new Label(s.getKey(), (double) s.getValue()));
         }
         for (int i = 0; i < result.size() - 1; i++) {
-            for (int j = 0; j < result.size() - i - 1; j++) {
-                if (result.get(j).getName().compareTo(result.get(j + 1).getName()) > 0) {
-                    Label temp = result.get(j);
-                    result.set(j, result.get(j + 1));
-                    result.set(j + 1, temp);
-                }
+            if (result.get(i).getName().compareTo(result.get(i + 1).getName()) > 0) {
+                Label temp = result.get(i);
+                result.set(i, result.get(i + 1));
+                result.set(i + 1, temp);
             }
         }
         return result.get(1);
