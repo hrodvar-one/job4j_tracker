@@ -25,7 +25,6 @@ public final class SingleTracker {
         return tracker.findById(id);
     }
 
-//    public Item[] findAll() {
     public List<Item> findAll() {
         return tracker.findAll();
     }
