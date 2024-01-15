@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ItemTest {
     @Test
-    void WhenItemAscByName() {
+    void whenItemAscByName() {
         List<Item> items = Arrays.asList(
                 new Item(1, "Item 1"),
                 new Item(3, "Item 3"),
@@ -23,7 +23,7 @@ class ItemTest {
     }
 
     @Test
-    void WhenItemDescByName() {
+    void whenItemDescByName() {
         List<Item> items = Arrays.asList(
                 new Item(1, "Item 1"),
                 new Item(3, "Item 3"),
