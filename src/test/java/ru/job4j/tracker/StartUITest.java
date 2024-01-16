@@ -158,7 +158,6 @@ class StartUITest {
         UserAction[] actions = new UserAction[]{
                 new Exit(output)
         };
-//        new StartUI(output).init(input, tracker, actions);
         new StartUI(output).init(input, tracker, List.of(actions));
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
