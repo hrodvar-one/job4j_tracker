@@ -44,7 +44,7 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
-        Item[] result = tracker.findByName(first.getName());
+        Item[] result = tracker.findByName(first.getName()).toArray(new Item[0]);
         assertThat(result.length).isEqualTo(3);
     }
 
@@ -58,7 +58,7 @@ public class TrackerTest {
         tracker.add(new Item("First"));
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
-        Item[] result = tracker.findByName(second.getName());
+        Item[] result = tracker.findByName(second.getName()).toArray(new Item[0]);
         assertThat(result[1].getName()).isEqualTo(second.getName());
     }
 
