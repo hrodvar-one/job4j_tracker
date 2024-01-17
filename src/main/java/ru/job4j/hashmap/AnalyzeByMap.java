@@ -72,13 +72,12 @@ public class AnalyzeByMap {
         for (Map.Entry<String, Integer> s : map.entrySet()) {
             result.add(new Label(s.getKey(), (double) s.getValue()));
         }
-        for (int i = 0; i < result.size() - 1; i++) {
-            if (result.get(i).getName().compareTo(result.get(i + 1).getName()) > 0) {
-                Label temp = result.get(i);
-                result.set(i, result.get(i + 1));
-                result.set(i + 1, temp);
+        Label maximum = null;
+        for (Label label : result) {
+            if (maximum == null || label.score() > maximum.score()) {
+                maximum = label;
             }
         }
-        return result.get(1);
+        return maximum;
     }
 }

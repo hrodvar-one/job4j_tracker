@@ -6,6 +6,11 @@ public record Label(String name, double score) implements Comparable<Label> {
         return Double.compare(this.score, o.score);
     }
 
+    @Override
+    public double score() {
+        return score;
+    }
+
     public String getName() {
         return name;
     }
