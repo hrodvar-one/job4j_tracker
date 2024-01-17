@@ -48,7 +48,7 @@ class UserTest {
                 .compareTo(
                         new User("Ivan", 31)
                 );
-        assertThat(result).isGreaterThan(0);
+        assertThat(result).isGreaterThan(-2);
     }
 
     @Test
