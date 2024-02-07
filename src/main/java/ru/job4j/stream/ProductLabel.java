@@ -9,8 +9,7 @@ public class ProductLabel {
         products.stream()
                 .filter(product -> product.getStandard() - product.getActual() >= 0)
                 .filter(product -> product.getStandard() - product.getActual() <= 3)
-                .forEach(product -> list.add(String.valueOf(new Label(product.getName(),
-                                                            (float) (product.getPrice() * 0.5)))));
+                .forEach(product -> list.add((new Label(product.getName(), (float) (product.getPrice() * 0.5))).toString()));
         return list;
     }
 }
