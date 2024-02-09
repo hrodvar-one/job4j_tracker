@@ -32,9 +32,9 @@ public class PhoneDictionary {
     }
 
     public static void main(String[] args) {
-        Person person = new Person("Petr", "Arsentev", "534872", "Bryansk");
-        Person person2 = new Person("Alex", "Petrov", "323123", "Omsk");
-        PhoneDictionary phoneDictionary = new PhoneDictionary();
+        var person = new Person("Petr", "Arsentev", "534872", "Bryansk");
+        var person2 = new Person("Alex", "Petrov", "323123", "Omsk");
+        var phoneDictionary = new PhoneDictionary();
         phoneDictionary.add(person);
         phoneDictionary.add(person2);
         System.out.println(phoneDictionary.find("Swb"));

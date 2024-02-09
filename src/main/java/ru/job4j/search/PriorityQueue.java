@@ -40,7 +40,7 @@ public class PriorityQueue {
     }
 
     public static void main(String[] args) {
-        PriorityQueue queue = new PriorityQueue();
+        var queue = new PriorityQueue();
         queue.tasks.add(new Task("high", 1));
         queue.tasks.add(new Task("medium", 2));
         queue.put(new Task("low", 3));
