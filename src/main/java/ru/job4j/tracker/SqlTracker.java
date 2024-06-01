@@ -47,9 +47,9 @@ public class SqlTracker implements Store {
                 "INSERT INTO items (name, created) VALUES (?, ?)",
                 Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            statement.setObject(2, item.getCreated());
+//            statement.setObject(2, item.getCreated());
+            statement.setTimestamp(2, item.getTimestamp());
             statement.executeUpdate();
-
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     int id = generatedKeys.getInt(1);
@@ -97,6 +97,7 @@ public class SqlTracker implements Store {
                 Item item = new Item();
                 item.setId(resultSet.getInt("id"));
                 item.setName(resultSet.getString("name"));
+                item.setCreated(resultSet.getTimestamp("created"));
                 items.add(item);
             }
         } catch (SQLException e) {
@@ -116,6 +117,7 @@ public class SqlTracker implements Store {
                     Item item = new Item();
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
+                    item.setCreated(resultSet.getTimestamp("created"));
                     items.add(item);
                 }
             }
@@ -135,6 +137,7 @@ public class SqlTracker implements Store {
                     Item item = new Item();
                     item.setId(resultSet.getInt("id"));
                     item.setName(resultSet.getString("name"));
+                    item.setCreated(resultSet.getTimestamp("created"));
                     return item;
                 }
             }
