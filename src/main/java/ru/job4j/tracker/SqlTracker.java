@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import java.io.InputStream;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -35,11 +34,11 @@ public class SqlTracker implements Store {
         }
     }
 
-    private Item createItem(int id, String name, LocalDateTime created)  {
+    private Item createItem(ResultSet result) throws SQLException {
         Item item = new Item();
-        item.setId(id);
-        item.setName(name);
-        item.setCreated(created);
+        item.setId(result.getInt("id"));
+        item.setName(result.getString("name"));
+        item.setCreated(result.getTimestamp("created").toLocalDateTime());
         return item;
     }
 
@@ -102,9 +101,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items");
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                items.add(createItem(resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getTimestamp("created").toLocalDateTime()));
+                items.add(createItem(resultSet));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,9 +117,7 @@ public class SqlTracker implements Store {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(createItem(resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()));
+                    items.add(createItem(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -138,9 +133,7 @@ public class SqlTracker implements Store {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    return createItem(resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime());
+                    return createItem(resultSet);
                 }
             }
         } catch (SQLException e) {
