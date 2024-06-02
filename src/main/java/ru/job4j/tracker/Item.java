@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -49,12 +48,8 @@ public class Item {
         return created;
     }
 
-    public void setCreated(Timestamp created) {
-        this.created = created.toLocalDateTime();
-    }
-
-    public Timestamp getTimestamp() {
-        return Timestamp.valueOf(created);
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     @Override
