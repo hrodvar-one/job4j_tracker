@@ -76,8 +76,10 @@ public class SqlTracker implements Store {
             statement.setString(1, item.getName());
             statement.setObject(2, item.getCreated());
             statement.setInt(3, id);
-            statement.executeUpdate();
-            return true;
+//            statement.executeUpdate();
+//            return true;
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
