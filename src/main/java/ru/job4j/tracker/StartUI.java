@@ -38,12 +38,14 @@ public class StartUI {
                 output, new ConsoleInput()
         );
 
-        try (Store tracker = new SqlTracker()) {
+        try (Store tracker = new MemTracker()) {
             UserAction[] actions = {
                     new Create(output),
+                    new CreateManyItems(output),
                     new FindAll(output),
                     new Replace(output),
                     new Delete(output),
+                    new DeleteAllItems(output),
                     new FindById(output),
                     new FindByName(output),
                     new Exit(output)
