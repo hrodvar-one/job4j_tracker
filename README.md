@@ -17,3 +17,11 @@
 1. Отображать список всех заявок.
 
 1. Производить поиск по имени заявки.
+
+<summary>Запуск проекта</summary>
+
+* Запустить метод main из класса StartUI находящийся по пути \src\main\java\ru\job4j\tracker\StartUI.java
+
+<summary>Внешний вид запущенного приложения</summary>
+
+![img.png](img.png)
