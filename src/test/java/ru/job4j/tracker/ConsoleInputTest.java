@@ -13,8 +13,8 @@ class ConsoleInputTest {
     @Test
     public void whenItemWasReplacedSuccessfully() {
         Output output = new StubOutput();
-        SqlTracker sqlTracker = new SqlTracker();
-        sqlTracker.add(new Item("Replaced item"));
+        MemTracker tracker = new MemTracker();
+        tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Replace replace = new Replace(output);
 
@@ -23,7 +23,7 @@ class ConsoleInputTest {
         when(input.askInt(any(String.class))).thenReturn(1);
         when(input.askStr(any(String.class))).thenReturn(replacedName);
 
-        replace.execute(input, sqlTracker);
+        replace.execute(input, tracker);
 
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(

@@ -10,14 +10,14 @@ import static org.mockito.Mockito.*;
 class FindByIdTest {
 
     private Output output;
-    private SqlTracker tracker;
+    private MemTracker tracker;
     private Input input;
     private FindById findByIdAction;
 
     @BeforeEach
     void setUp() {
         output = mock(Output.class);
-        tracker = mock(SqlTracker.class);
+        tracker = mock(MemTracker.class);
         input = mock(Input.class);
         findByIdAction = new FindById(output);
     }

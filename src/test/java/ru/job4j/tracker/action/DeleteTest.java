@@ -9,14 +9,14 @@ import static org.mockito.Mockito.*;
 class DeleteTest {
 
     private Output output;
-    private SqlTracker tracker;
+    private MemTracker tracker;
     private Input input;
     private Delete deleteAction;
 
     @BeforeEach
     void setUp() {
         output = mock(Output.class);
-        tracker = mock(SqlTracker.class);
+        tracker = mock(MemTracker.class);
         input = mock(Input.class);
         deleteAction = new Delete(output);
     }
