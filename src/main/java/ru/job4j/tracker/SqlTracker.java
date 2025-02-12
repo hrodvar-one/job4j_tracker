@@ -70,7 +70,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public boolean replace(int id, Item item) {
+    public boolean replace(Integer id, Item item) {
         try (PreparedStatement statement = connection.prepareStatement(
                 "UPDATE items SET name = ?, created = ? WHERE id = ?")) {
             statement.setString(1, item.getName());
@@ -85,7 +85,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public void delete(int id) {
+    public boolean delete(Integer id) {
         try (PreparedStatement statement = connection.prepareStatement(
                 "DELETE FROM items WHERE id = ?")) {
             statement.setInt(1, id);
@@ -93,6 +93,7 @@ public class SqlTracker implements Store {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
@@ -127,7 +128,7 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public Item findById(int id) {
+    public Item findById(Integer id) {
         try (PreparedStatement statement = connection.prepareStatement(
                 "SELECT * FROM items WHERE id = ?")) {
             statement.setInt(1, id);

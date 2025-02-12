@@ -38,12 +38,12 @@ public class MemTracker implements Store {
         return rsl;
     }
 
-    public Item findById(int id) {
+    public Item findById(Integer id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
 
-    public boolean replace(int id, Item item) {
+    public boolean replace(Integer id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
@@ -53,12 +53,13 @@ public class MemTracker implements Store {
         return rsl;
     }
 
-    public void delete(int id) {
+    public boolean delete(Integer id) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
             items.remove(index);
         }
+        return rsl;
     }
 
     @Override

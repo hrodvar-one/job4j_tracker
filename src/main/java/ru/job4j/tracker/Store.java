@@ -1,20 +1,18 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
-
 import java.util.List;
 
 public interface Store extends AutoCloseable {
 
     Item add(Item item);
 
-    boolean replace(int id, Item item);
+    boolean replace(Integer id, Item item);
 
-    void delete(int id);
+    boolean delete(Integer id);
 
     List<Item> findAll();
 
     List<Item> findByName(String key);
 
-    Item findById(int id);
+    Item findById(Integer id);
 }
