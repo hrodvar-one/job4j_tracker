@@ -1,3 +1,29 @@
 2024-06-03 07:29:12.804128+06:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DATABASECHANGELOGLOCK" not found (this database is empty); SQL statement:
 SELECT COUNT(*) FROM DATABASECHANGELOGLOCK [42104-222]
+2025-03-11 13:14:31.391187+06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "J_USER" уже существует
+Table "J_USER" already exists; SQL statement:
+create table j_user (
+    id serial primary key,
+    name varchar(2000),
+    role_id int not null references j_role(id)
+) [42101-222]
+2025-03-11 13:15:36.318262+06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "J_USER_NOTIFICATION" уже существует
+Table "J_USER_NOTIFICATION" already exists; SQL statement:
+create table j_user_notification (
+    id serial primary key,
+    messenger text,
+    identify text,
+    j_user_id int REFERENCES j_user(id)
+) [42101-222]
+2025-03-11 13:16:04.231657+06:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PARTICIPATES" уже существует
+Table "PARTICIPATES" already exists; SQL statement:
+CREATE TABLE participates (
+   id serial PRIMARY KEY,
+   item_id int not null REFERENCES items(id),
+   user_id int not null REFERENCES j_user(id),
+   UNIQUE (item_id, user_id)
+) [42101-222]
